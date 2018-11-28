@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<widgets>
+ 	<!--
+	================================================================
+ 	公用挂件配置
+	================================================================
+	-->	
+	<page id="common">
+		<widget id="header">
+			<type>header</type>
+            <folder>common</folder>
+            <custom_page>header</custom_page>
+		</widget>
+	</page>
+</widgets>

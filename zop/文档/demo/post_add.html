@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- HTML5 shim for IE8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+
+	<link href="statics/simpleboot/themes/flat/theme.min.css" rel="stylesheet">
+    <link href="statics/simpleboot/css/simplebootadmin.css" rel="stylesheet">
+    <link href="statics/js/artDialog/skins/default.css" rel="stylesheet" />
+    <link href="statics/simpleboot/font-awesome/4.1.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+    <style>
+		.length_3{width: 180px;}
+	</style>
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="statics/simpleboot/font-awesome/4.1.0/css/font-awesome-ie7.min.css">
+	<![endif]-->
+<script type="text/javascript">
+//全局变量
+var GV = {
+    DIMAUB: "/demo/",
+    JS_ROOT: "statics/js/",
+    TOKEN: ""
+};
+</script>
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="statics/simpleboot/js/jquery.js"></script>
+    <script src="statics/js/wind.js"></script>
+    <script src="statics/simpleboot/js/jquery.smooth-scroll.min.js"></script>
+    <script src="statics/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		#think_page_trace_open{
+			z-index:9999;
+		}
+	</style>
+
+<!--head end-->
+<script type="text/javascript">
+    var catid = "12";
+</script>
+<style type="text/css">
+.col-auto {
+	overflow: hidden;
+	_zoom: 1;
+	_float: left;
+	border: 1px solid #c2d1d8;
+}
+.col-right {
+	float: right;
+	width: 210px;
+	overflow: hidden;
+	margin-left: 6px;
+	border: 1px solid #c2d1d8;
+}
+
+body fieldset {
+	border: 1px solid #D8D8D8;
+	padding: 10px;
+	background-color: #FFF;
+}
+body fieldset legend {
+    background-color: #F9F9F9;
+    border: 1px solid #D8D8D8;
+    font-weight: 700;
+    padding: 3px 8px;
+}
+.list-dot{ padding-bottom:10px}
+.list-dot li,.list-dot-othors li{padding:5px 0; border-bottom:1px dotted #c6dde0; font-family:"宋体"; color:#bbb; position:relative;_height:22px}
+.list-dot li span,.list-dot-othors li span{color:#004499}
+.list-dot li a.close span,.list-dot-othors li a.close span{display:none}
+.list-dot li a.close,.list-dot-othors li a.close{ background: url("statics/images/cross.png") no-repeat left 3px; display:block; width:16px; height:16px;position: absolute;outline:none;right:5px; bottom:5px}
+.list-dot li a.close:hover,.list-dot-othors li a.close:hover{background-position: left -46px}
+.list-dot-othors li{float:left;width:24%;overflow:hidden;}
+</style>
+</head>
+<body class="J_scroll_fixed">
+<div class="wrap J_check_wrap">
+  <ul class="nav nav-tabs">
+     <li><a href="post.html">所有文章</a></li>
+     <li class="active"><a href="post_add.html"  target="_self">添加文章</a></li>
+  </ul>
+  <form name="myform" id="myform" action="#" method="post" class="form-horizontal" enctype="multipart/form-data">
+  <div class="col-right">
+    <div class="table_full">
+     
+    </div>
+  </div>
+  <div class="col-auto">
+    <div class="table_full">
+      <table width="100%" cellpadding="2" cellspacing="2">
+           
+            <tr>
+              <th width="80">内容</th>
+              <td><span class="must_red">*</span><div id='content_tip'></div>
+              <script type="text/plain" id="content" name="post[post_content]"></script>
+                <script type="text/javascript">
+                //编辑器路径定义
+                var editorURL = GV.DIMAUB;
+                </script>
+                <script type="text/javascript"  src="statics/js/ueditor/ueditor.config.js"></script>
+                <script type="text/javascript"  src="statics/js/ueditor/ueditor.all.min.js"></script>
+				<script type="text/javascript">
+    			var editorcontent;
+                        UE.commands['attachments'] = {
+                            execCommand : function(cmd){
+                                flashupload('flashupload', '附件上传','content',ueAttachment,'10,,1,,,0','Contents','12','d909680d11bb7090136c35b9b9d4e66d');
+                            },
+                            queryCommandState : function(){
+                                return this.highlight ? -1 :0;
+                            }
+                        };
+				editorcontent = new baidu.editor.ui.Editor();
+	            editorcontent.render( 'content' );
+		        </script> 
+				<style type="text/css">
+				.content_attr {
+					border: 1px solid #CCC;
+					padding: 5px 8px;
+					background: #FFC;
+					margin-top: 6px
+				}
+				</style>
+				</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="form-actions">
+        <button class="btn btn_submit"type="submit">提交</button>
+        <a class="btn" href="post.html">返回</a>
+  </div>
+ </form>
+</div>
+<script type="text/javascript" src="statics/js/common.js"></script>
+<script type="text/javascript" src="statics/js/content_addtop.js"></script>
+
+</body>
+</html>

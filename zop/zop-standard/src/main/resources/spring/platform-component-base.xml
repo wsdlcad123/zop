@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" default-autowire="byName" default-lazy-init="false">
+
+    <!-- DAO -->
+    <bean id="adminDAO"  class="com.zop.platform.component.base.dao.impl.AdminDAOImpl"></bean>
+    <bean id="menuDAO"  class="com.zop.platform.component.base.dao.impl.MenuDAOImpl"></bean>
+    <bean id="settingDAO"  class="com.zop.platform.component.base.dao.impl.SettingDAOImpl"></bean>
+    <bean id="componentDAO"  class="com.zop.platform.component.base.dao.impl.ComponentDAOImpl"></bean>
+    <bean id="authDAO"  class="com.zop.platform.component.base.dao.impl.AuthDAOImpl"></bean>
+    <bean id="roleDAO"  class="com.zop.platform.component.base.dao.impl.RoleDAOImpl"></bean>
+
+    <!-- Service -->
+    <bean id="adminService"  class="com.zop.platform.component.base.service.impl.AdminServiceImpl"></bean>
+    <bean id="menuService"  class="com.zop.platform.component.base.service.impl.MenuServiceImpl"></bean>
+    <bean id="settingService"  class="com.zop.platform.component.base.service.impl.SettingServiceImpl"></bean>
+    <bean id="componentService"  class="com.zop.platform.component.base.service.impl.ComponentServiceImpl"></bean>
+    <bean id="authService"  class="com.zop.platform.component.base.service.impl.AuthServiceImpl"></bean>
+    <bean id="roleService"  class="com.zop.platform.component.base.service.impl.RoleServiceImpl"></bean>
+
+    <!-- Component -->
+    <bean id="platformBaseComponent"  class="com.zop.platform.component.base.PlatformBaseComponent"></bean>
+</beans>

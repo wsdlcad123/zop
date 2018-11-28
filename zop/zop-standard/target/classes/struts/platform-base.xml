@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="platform-base" extends="zop-default" namespace="/admin">
+        <interceptors>
+            <interceptor name="adminPermissionInterceptor"
+                         class="com.zop.platform.component.base.interceptor.AdminPermissionInterceptor">
+            </interceptor>
+            <interceptor name="threadLocalInterceptor"
+                         class="com.zop.framework.interceptor.ThreadLocalInterceptor">
+            </interceptor>
+            <interceptor-stack name="adminInterceptorStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="threadLocalInterceptor"></interceptor-ref>
+                <interceptor-ref name="adminPermissionInterceptor"></interceptor-ref>
+            </interceptor-stack>
+            <interceptor-stack name="defaultInterceptorStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="threadLocalInterceptor"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="adminInterceptorStack"></default-interceptor-ref>
+        <action name="global" class="globalAction">
+            <interceptor-ref name="defaultInterceptorStack"></interceptor-ref>
+            <result name="gv">/WEB-INF/jsp/GV.jsp</result>
+        </action>
+		<action name="login" class="loginAction">
+            <interceptor-ref name="defaultInterceptorStack"></interceptor-ref>
+            <result name="login">/WEB-INF/jsp/platform/login.jsp</result>
+		</action>
+        <action name="index" class="indexAction">
+            <result name="success">/WEB-INF/jsp/platform/index.jsp</result>
+        </action>
+        <action name="main" class="mainAction">
+            <result name="success">/WEB-INF/jsp/platform/main.jsp</result>
+        </action>
+        <action name="menu" class="menuAction">
+            <result name="success">/WEB-INF/jsp/platform/menu.jsp</result>
+            <result name="add">/WEB-INF/jsp/platform/menu_add.jsp</result>
+            <result name="edit">/WEB-INF/jsp/platform/menu_edit.jsp</result>
+        </action>
+        <action name="setting" class="settingAction">
+            <result name="success">/WEB-INF/jsp/platform/setting.jsp</result>
+        </action>
+        <action name="component" class="componentAction">
+            <result name="success">/WEB-INF/jsp/platform/component.jsp</result>
+        </action>
+        <action name="auth" class="authAction">
+            <result name="success">/WEB-INF/jsp/platform/auth.jsp</result>
+            <result name="add">/WEB-INF/jsp/platform/auth_add.jsp</result>
+            <result name="edit">/WEB-INF/jsp/platform/auth_edit.jsp</result>
+        </action>
+        <action name="role" class="roleAction">
+            <result name="success">/WEB-INF/jsp/platform/role.jsp</result>
+            <result name="add">/WEB-INF/jsp/platform/role_add.jsp</result>
+            <result name="edit">/WEB-INF/jsp/platform/role_edit.jsp</result>
+        </action>
+        <action name="admin" class="adminAction">
+            <result name="success">/WEB-INF/jsp/platform/admin.jsp</result>
+            <result name="add">/WEB-INF/jsp/platform/admin_add.jsp</result>
+            <result name="edit">/WEB-INF/jsp/platform/admin_edit.jsp</result>
+        </action>
+	</package>
+</struts>

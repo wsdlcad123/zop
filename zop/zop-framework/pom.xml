@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.zop</groupId>
+    <artifactId>zop-framework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- 指定Maven仓库 -->
+    <repositories>
+        <repository>
+            <id>oschinaRepository</id>
+            <name>local private nexus</name>
+            <url>http://maven.oschina.net/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <!-- 指定maven plugin仓库 -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>oschinaPluginRepository</id>
+            <name>local private nexus</name>
+            <url>http://maven.oschina.net/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <!-- 指定maven 管理仓库 -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://192.168.0.242:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://192.168.0.242:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <scm>
+        <connection>scm:svn:http://code.taobao.org/svn/zop/trunk/zop-test</connection>
+        <developerConnection>scm:svn:http://code.taobao.org/svn/zop/trunk/zop-test</developerConnection>
+        <url>http://code.taobao.org/svn/zop/trunk/zop-test</url>
+    </scm>
+    <properties>
+        <java.version>1.6</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>4.10</junit.version>
+        <zop.utils.version>1.0-SNAPSHOT</zop.utils.version>
+        <zop.webutils.version>1.0-SNAPSHOT</zop.webutils.version>
+        <zop.rewrite.version>1.0-SNAPSHOT</zop.rewrite.version>
+        <logback.version>1.0.13</logback.version>
+        <slf4j.version>1.7.4</slf4j.version>
+        <jcl.version>1.6.4</jcl.version>
+        <commons.logging.version>1.1.3</commons.logging.version>
+        <javamelody.version>1.47.0</javamelody.version>
+        <struts2.version>2.3.15.2</struts2.version>
+        <oscache.version>2.2</oscache.version>
+        <servlet.version>2.5</servlet.version>
+        <jsp.version>2.0</jsp.version>
+    </properties>
+    <dependencies>
+        <!-- junit依赖包 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- zop依赖包 -->
+        <dependency>
+            <groupId>com.zop</groupId>
+            <artifactId>zop-rewrite</artifactId>
+            <version>${zop.rewrite.version}</version>
+        </dependency>
+        <!-- 加入javamelody依赖包 -->
+        <dependency>
+            <groupId>net.bull.javamelody</groupId>
+            <artifactId>javamelody-core</artifactId>
+            <version>${javamelody.version}</version>
+        </dependency>
+        <!-- 加入struts2依赖包 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+        <!-- struts2整合spring插件 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+        <!-- 可以看到struts2应用里的Action等各种资源的影射情况 -->
+        <!-- 可以使用类似http://localhost:9999/sshe/config-browser/showConstants.sy的url来访问 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-config-browser-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+        <!-- OSCache -->
+        <dependency>
+            <groupId>oscache</groupId>
+            <artifactId>oscache</artifactId>
+            <version>${oscache.version}</version>
+        </dependency>
+        <!-- jsp依赖包 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${jsp.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav</artifactId>
+                <version>1.0-beta-2</version>
+            </extension>
+        </extensions>
+        <plugins>
+            <!-- 编译 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- 编译release -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.0-beta-9</version>
+                <configuration>
+                    <tagBase>http://code.taobao.org/svn/zop/tags</tagBase>
+                </configuration>
+            </plugin>
+            <!-- 编译jar包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Implementation-Build>${buildNumber}</Implementation-Build>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <format>{0,date,yyyy-MM-dd HH:mm:ss}</format>
+                    <items>
+                        <item>timestamp</item>
+                    </items>
+                    <doCheck>false</doCheck>
+                    <doUpdate>true</doUpdate>
+                </configuration>
+            </plugin>
+            <!-- 编译带源码包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <includePom>true</includePom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

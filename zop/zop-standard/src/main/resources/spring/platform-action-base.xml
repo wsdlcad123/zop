@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" default-autowire="byName" default-lazy-init="false">
+
+       <bean id="globalAction" class="com.zop.platform.component.base.action.GlobalAction" scope="prototype" autowire="byName"></bean>
+       <bean id="loginAction" class="com.zop.platform.component.base.action.LoginAction" scope="prototype" autowire="byName"></bean>
+       <bean id="indexAction" class="com.zop.platform.component.base.action.IndexAction" scope="prototype" autowire="byName"></bean>
+       <bean id="mainAction" class="com.zop.platform.component.base.action.MainAction" scope="prototype" autowire="byName"></bean>
+       <bean id="menuAction" class="com.zop.platform.component.base.action.MenuAction" scope="prototype" autowire="byName"></bean>
+       <bean id="settingAction" class="com.zop.platform.component.base.action.SettingAction" scope="prototype" autowire="byName"></bean>
+       <bean id="componentAction" class="com.zop.platform.component.base.action.ComponentAction" scope="prototype" autowire="byName"></bean>
+       <bean id="authAction" class="com.zop.platform.component.base.action.AuthAction" scope="prototype" autowire="byName"></bean>
+       <bean id="roleAction" class="com.zop.platform.component.base.action.RoleAction" scope="prototype" autowire="byName"></bean>
+       <bean id="adminAction" class="com.zop.platform.component.base.action.AdminAction" scope="prototype" autowire="byName"></bean>
+</beans>

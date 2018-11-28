@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbsolution>
+	<!-- 礼品卡表，存储生成的礼品卡账号和密码 -->
+	<action> 
+		<command>create</command>
+		<table>test_tab</table>
+		<field><name>id</name><type>int</type><size>8</size><option>11</option></field>
+        <field><name>username</name><type>varchar</type><size>255</size><option>00</option></field><!-- 卡号-->
+        <field><name>pwd</name><type>varchar</type><size>255</size><option>00</option></field><!-- 密码 -->
+	</action>
+</dbsolution>

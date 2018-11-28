@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" default-autowire="byName" default-lazy-init="false">
+    <bean class="com.zop.utils.context.SpringContextHolder"></bean>
+    <bean class="com.zop.framework.component.ComponentLoader"></bean>
+
+	<bean id="xmlWidgetParamParser" class="com.zop.rewrite.parser.param.XmlWidgetParamParser"></bean>
+	<bean id="widgetParamParser" class="com.zop.rewrite.parser.param.DefaultWidgetsParamParser">
+		<constructor-arg>
+			<ref bean="xmlWidgetParamParser" />
+		</constructor-arg>
+	</bean>
+	<bean id="defaultPageParser" class="com.zop.rewrite.parser.page.DefaultPageParser" scope="prototype"></bean>
+
+    <!-- 解决方案导入器 -->
+    <bean id="mysqlSolution" class="com.zop.utils.dbsolution.impl.MySQLSolution" scope="prototype"></bean>
+
+</beans>

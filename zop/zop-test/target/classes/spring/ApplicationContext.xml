@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" default-autowire="byName" default-lazy-init="false">
+    <bean id="placeholderConfig"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>classpath:jdbc.properties</value>
+        </property>
+    </bean>
+    <bean class="com.zop.utils.context.SpringContextHolder"></bean>
+	<bean id="xmlWidgetParamParser" class="com.zop.rewrite.parser.param.XmlWidgetParamParser"></bean>
+	<bean id="widgetParamParser" class="com.zop.rewrite.parser.param.DefaultWidgetsParamParser">
+		<constructor-arg>
+			<ref bean="xmlWidgetParamParser" />
+		</constructor-arg>
+	</bean>
+	<bean id="defaultPageParser" class="com.zop.rewrite.parser.page.DefaultPageParser" scope="prototype"></bean>
+    <bean id="test" class="com.zop.test.component.widget.TestWidget" scope="prototype"></bean>
+    <bean id="header" class="com.zop.test.component.widget.HeaderWidget" scope="prototype"></bean>
+
+    <!-- 配置数据源 -->
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${datasource.url}" />
+        <property name="username" value="${datasource.username}" />
+        <property name="password" value="${datasource.password}" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="0" />
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="20" />
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="0" />
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="60000" />
+        <property name="validationQuery" value="${datasource.validationQuery}" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+        <property name="testWhileIdle" value="true" />
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="25200000" />
+        <!-- 打开removeAbandoned功能 -->
+        <property name="removeAbandoned" value="true" />
+        <!-- 1800秒，也就是30分钟 -->
+        <property name="removeAbandonedTimeout" value="1800" />
+        <!-- 关闭abanded连接时输出错误日志 -->
+        <property name="logAbandoned" value="true" />
+        <!-- 监控数据库 -->
+        <property name="filters" value="stat" />
+    </bean>
+    <bean id="simpleJdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+        <constructor-arg><ref bean="dataSource"/></constructor-arg>
+    </bean>
+    <bean id="jdbcTemplate" class="com.zop.utils.database.impl.LowerCaseJdbcTemplate"></bean>
+    <bean id="dbRouter" class="com.zop.utils.database.impl.DBRouter">
+        <property name="prefix">
+            <value>zop_</value>
+        </property>
+    </bean>
+    <bean id="baseJdbcDaoSupport" class="com.zop.utils.database.BaseJdbcDaoSupport"></bean>
+    <bean id ="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+        <property name = "dataSource" >
+            <ref bean = "dataSource" />
+        </property>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" read-only="false"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="serviceOperation" expression="execution(* com.zop.*.component.service.impl.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
+    </aop:config>
+
+    <!-- 解决方案导入器 -->
+    <bean id="mysqlSolution" class="com.zop.utils.dbsolution.impl.MySQLSolution" scope="prototype"></bean>
+
+    <bean id="userDAO"  class="com.zop.test.component.dao.impl.UserDAOImpl"></bean>
+    <bean id="userService"  class="com.zop.test.component.service.impl.UserServiceImpl"></bean>
+</beans>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uris>
+    <uri regex="/index.html">/index.html</uri>
+    <uri regex="/test_(.*).html">/test.html</uri>
+</uris>

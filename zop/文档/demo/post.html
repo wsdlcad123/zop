@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- HTML5 shim for IE8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+
+	<link href="statics/simpleboot/themes/flat/theme.min.css" rel="stylesheet">
+    <link href="statics/simpleboot/css/simplebootadmin.css" rel="stylesheet">
+    <link href="statics/js/artDialog/skins/default.css" rel="stylesheet" />
+    <link href="statics/simpleboot/font-awesome/4.1.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+    <style>
+		.length_3{width: 180px;}
+	</style>
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="statics/simpleboot/font-awesome/4.1.0/css/font-awesome-ie7.min.css">
+	<![endif]-->
+<script type="text/javascript">
+//全局变量
+var GV = {
+    DIMAUB: "localhost",
+    JS_ROOT: "statics/js/",
+    TOKEN: ""
+};
+</script>
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="statics/simpleboot/js/jquery.js"></script>
+    <script src="statics/js/wind.js"></script>
+    <script src="statics/simpleboot/js/jquery.smooth-scroll.min.js"></script>
+    <script src="statics/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		#think_page_trace_open{
+			z-index:9999;
+		}
+	</style>
+
+<!--head end-->
+
+<body class="J_scroll_fixed">
+<div class="wrap J_check_wrap">
+  <ul class="nav nav-tabs">
+     <li class="active"><a href="post.html">所有文章</a></li>
+     <li><a href="post_add.html"  target="_self">添加文章</a></li>
+  </ul>
+  <form class="well form-search" method="post" action="#">
+    <div class="search_type cc mb10">
+      <div class="mb10"> 
+        <span class="mr20">分类：
+        <select class="select_2" name="term">
+          	<option value='0' >全部</option>
+        </select>
+               &nbsp; &nbsp;关键字：
+        <input type="text" class="input length_2" name="keyword" style="width:200px;" value="" placeholder="请输入关键字...">
+        <input type="submit" class="btn" value="搜索"/>
+        </span>
+      </div>
+    </div>
+  </form>
+  <form action="#" method="post">
+    <div class="table_list">
+      <table width="100%" class="table table-hover">
+        <thead>
+	          <tr>
+	            <th width="16"><label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x"></label></th>
+	            <th width="50">排序</th>
+	            <th>ID</th>
+	            <th>标题</th>
+	            <!-- <th>点击量</th> -->
+	            <th width="80">发布人</th>
+	            <th width="120"><span>发布时间</span></th>
+	            <th width="50">状态</th>
+	            <th width="120">操作</th>
+	          </tr>
+        </thead>
+        	<tr>
+				<td><input type="checkbox" name="ids[]" value="104" ></td>
+				<td><input name='listorders[104]' type='text' size='3' value='0'></td>
+				<td><a>104</a></td>
+				<td><a href="#" target="_blank">
+					<span style="" >eee</span></a>
+				</td>
+				<!-- <td>0</td> -->
+				<td>admin</td>
+				<td>2014-07-25 11:51:30</td>
+				<td>已审核</td>
+				<td>
+					<a href="#">查看评论</a> |
+					<a href="#" target="_blank" >修改</a>|
+					<a href="#" >删除</a>
+				</td>
+			</tr>
+          </table>
+
+          <div class="pagination">
+			&nbsp;<span class="current" >1</span> <a href="#"> 2</a> &nbsp;<a href="#">下一页</a> <a href="#">尾页</a> 
+		</div>
+
+     
+    </div>
+    <div class="form-actions">
+        <label class="checkbox inline" for="check_all"><input type="checkbox" class="J_check_all" data-direction="y" data-checklist="J_check_y" id="check_all">全选</label>                
+        <button class="btn btn-primary J_ajax_submit_btn" type="submit" data-action="/cmfx/index.php?g=Admin&m=post&a=listorders">排序</button>
+        <button class="btn btn-primary J_ajax_submit_btn" type="submit" data-action="/cmfx/index.php?g=Admin&m=post&a=check&check=1" data-subcheck="true" >审核</button>
+        <button class="btn btn-primary J_ajax_submit_btn" type="submit" data-action="/cmfx/index.php?g=Admin&m=post&a=check&uncheck=1" data-subcheck="true" >取消审核</button>
+        <button class="btn btn-primary J_ajax_submit_btn" type="submit" data-action="/cmfx/index.php?g=Admin&m=post&a=delete" data-subcheck="true" data-msg="你确定删除吗？">删除</button>
+        <button class="btn btn-primary" type="button" id="J_Content_remove">批量移动</button>
+      </div>
+  </form>
+</div>
+<script src="statics/js/common.js"></script>
+</body>
+</html>

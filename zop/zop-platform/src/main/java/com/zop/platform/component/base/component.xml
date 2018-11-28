@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="平台基础组件"  version="1.0" author="zhangbaochao">
+    <plugins>
+        <plugin name="设置网站信息插件" id="settingSitePlugin">
+            <bundle id="settingPluginBundle"></bundle>
+        </plugin>
+        <plugin name="设置SEO插件" id="settingSeoPlugin">
+            <bundle id="settingPluginBundle"></bundle>
+        </plugin>
+    </plugins>
+</component>

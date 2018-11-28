@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- HTML5 shim for IE8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+
+	<link href="statics/simpleboot/themes/flat/theme.min.css" rel="stylesheet">
+    <link href="statics/simpleboot/css/simplebootadmin.css" rel="stylesheet">
+    <link href="statics/js/artDialog/skins/default.css" rel="stylesheet" />
+    <link href="statics/simpleboot/font-awesome/4.1.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+    <style>
+		.length_3{width: 180px;}
+	</style>
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="statics/simpleboot/font-awesome/4.1.0/css/font-awesome-ie7.min.css">
+	<![endif]-->
+<script type="text/javascript">
+//全局变量
+var GV = {
+    DIMAUB: "localhost",
+    JS_ROOT: "statics/js/",
+    TOKEN: ""
+};
+</script>
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="statics/simpleboot/js/jquery.js"></script>
+    <script src="statics/js/wind.js"></script>
+    <script src="statics/simpleboot/js/jquery.smooth-scroll.min.js"></script>
+    <script src="statics/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		#think_page_trace_open{
+			z-index:9999;
+		}
+	</style>
+
+<!--head end-->
+<style>
+.pop_nav {
+	padding: 0 5px;
+	height: 25px;
+	clear: both;
+	margin-left: 0;
+	list-style: none;
+	margin-bottom: 20px;
+
+}
+.pop_nav li{
+	float: left;
+
+}
+.pop_nav li a {
+	border-bottom: 2px solid #ddd;
+	font-weight: bold;
+	position: relative;
+	border-radius: 2px;
+	margin-bottom: -1px;
+	padding: 3px 15px;
+}
+.pop_nav li.active a {
+	color: #2c3e50;
+	border-bottom: 2px solid gray;
+}
+</style>
+
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+	 	
+		<ul class="nav nav-tabs">
+	        <li class="active"><a href="site.html">网站信息</a></li>
+			<li><a href="site.html">网站信息</a></li>
+	    </ul>
+			<ul class="pop_nav">
+			<li class="active"><a href="#A" data-toggle="tab">网站信息</a></li>
+	        <li><a href="#B" data-toggle="tab">SEO设置</a></li>
+	        <li><a href="#C" data-toggle="tab">URL设置</a></li>
+	        <li><a href="#D" data-toggle="tab">用户同步</a></li>
+			</ul>
+
+		<form class="form-horizontal J_ajaxForms" name="myform" id="myform" action="#" method="post">
+		 <fieldset>
+		<div class="tabbable">
+        <div class="tab-content">
+          <div class="tab-pane active" id="A">
+			<table cellpadding="2" cellspacing="2" class="table_form" width="100%">
+				<tbody>
+					<tr>
+						<td width="180">网站名称：</td>
+						<td><input type="text" class="input" name="options[site_name]" value="ThinkCMF内容管理框架"><span class="must_red">*</span>
+												<input type="hidden" class="input" name="option_id" value="1">
+												</td>
+					</tr>
+					<tr>
+						<td>网站域名：</td>
+						<td><input type="text" class="input" name="options[site_host]" value="http://localhost/cmf/"><span class="must_red">*</span></td>
+					</tr>
+					<tr>
+						<td>安装路径：</td>
+						<td><input type="text" class="input" name="options[site_root]" value=""><span class="must_red">*&nbsp;&nbsp;如安装在根目录请填“/”</span></td>
+					</tr>
+					<tr>
+						<td>模版方案：</td>
+						<td>
+							<select name="options[site_tpl]" class="normal_select" >
+																	<option value="simpleboot" >simpleboot</option>							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>后台风格：</td>
+						<td>
+							<select name="options[site_adminstyle]" class="normal_select" >
+																	<option value="flat" >flat</option>							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>备案信息：</td>
+						<td><input type="text" class="input" name="options[site_icp]" value=""></td>
+					</tr>
+					<tr>
+						<td>站长邮箱：</td>
+						<td><input type="text" class="input" name="options[site_admin_email]" value="admin@admin.com"></td>
+					</tr>
+					
+					<tr>
+						<td>统计代码：</td>
+						<td><textarea name="options[site_tongji]" rows="5" cols="57"></textarea></td>
+					</tr>
+					<tr>
+						<td>版权信息：</td>
+						<td><textarea name=options[site_copyright] rows="5" cols="57"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+
+          </div>
+          <div class="tab-pane" id="B">
+           <table cellpadding="2" cellspacing="2" class="table_form"
+							width="100%">
+							<tbody>
+								<tr>
+									<td width="180">SEO标题:</td>
+									<td><input type="text" class="input" name="options[site_seo_title]" value="ThinkCMF内容管理框架"></td>
+								</tr>
+								<tr>
+									<td>SEO关键字:</td>
+									<td><input type="text" class="input" name="options[site_seo_keywords]" value=""></td>
+								</tr>
+								<tr>
+									<td>SEO描述:</td>
+									<td><textarea name="options[site_seo_description]" rows="5" cols="57">ThinkCMF是简约风网络科技发布的一款用于快速开发的内容管理框架</textarea></td>
+								</tr>
+							</tbody>
+						</table>
+
+          </div>
+          <div class="tab-pane" id="C">
+            <table cellpadding="2" cellspacing="2" class="table_form" width="100%">
+							<tbody>
+								<tr>
+									<td width="180">url模式：</td>
+									<td>
+																				<select name="options[urlmode]"  class="normal_select">
+																							<option value="0" selected>普通模式</option>												<option value="1" >PATHINFO模式</option>												<option value="2" >REWRITE模式</option>										</select>
+										<span class="must_red">*&nbsp;&nbsp;如果你开启的是REWRITE模式，请确保服务器支持REWRITE；</span>
+									</td>
+								</tr>
+								<tr>
+									<td>URL伪静态后缀：</td>
+									<td><input type="text" class="input" name="options[html_suffix]" value=""><span class="must_red">&nbsp;&nbsp;普通模式不支持</span></td>
+								</tr>
+							</tbody>
+						</table>
+          </div>
+          <div class="tab-pane" id="D">
+            <table cellpadding="0" cellspacing="0" class="table_form" width="100%">
+							<tbody>
+								<tr>
+									<td width="200">开启Ucenter:</td>
+									<td>
+																				<input type="checkbox" class="J_check" name="options[ucenter_enabled]" value="1" >
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+          </div>
+          
+        </div>
+      </div>
+      
+      	<div class="form-actions">
+            <button type="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn">提交</button>
+          </div>
+           </fieldset>
+		</form>
+		
+	</div>
+	<script type="text/javascript" src="statics/js/common.js"></script>
+
+</body>
+</html>

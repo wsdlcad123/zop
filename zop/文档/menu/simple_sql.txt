@@ -1,0 +1,9 @@
+INSERT INTO `zop_menu` (`id`, `parent_id`, `component_view_id`, `url`, `name`, `icon`, `status`, `type`, `orders`, `depth`) VALUES
+(1, 0, 'platform.base', '', '设置', 'cogs', 1, 1, 1, 1),
+(11, 1, 'platform.base', 'admin/setting.action', '网站信息', '', 1, 1, 1, 2),
+(12, 1, 'platform.base', 'admin/menu.action', '菜单管理', '', 1, 1, 2, 2),
+(13, 1, 'platform.base', 'admin/auth.action', '权限管理', '', 1, 1, 3, 2),
+(14, 1, 'platform.base', 'admin/role.action', '角色管理', '', 1, 1, 4, 2),
+(15, 1, 'platform.base', 'admin/admin.action', '管理员管理', '', 1, 1, 5, 2),
+(16, 1, 'platform.base', 'admin/admin.action?action=password', '修改密码', '', 1, 1, 6, 2),
+(19, 1, 'platform.base', 'admin/component.action', '组件管理', '', 1, 1, 9, 2);
